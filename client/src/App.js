@@ -7,13 +7,14 @@ import api from './services/Services';
 const App = () => {
 
     const [weather, setWeather] = useState({})
-
     useEffect(() => {
         api.getWeather().then((data) => {
             setWeather(data)
         })
             .catch((error) => console.log(error))
     }, []);
+  
+  console.log('weather', weather)
 
   return (
     <main>
