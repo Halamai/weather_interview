@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Card from "./Components/Card/Card.js";
 import api from './services/Services';
+import Day from './Components/Day/Day';
 
 
 
 const App = () => {
-
-    const [weather, setWeather] = useState({})
+    const [weather, setWeather] = useState(null)
     useEffect(() => {
         api.getWeather().then((data) => {
             setWeather(data)
@@ -14,12 +14,10 @@ const App = () => {
             .catch((error) => console.log(error))
     }, []);
   
-  console.log('weather', weather)
-
   return (
     <main>
-      <Card weather={ weather}/>
-        <div>HELO WORLD</div>
+      <Day/>
+      {weather &&  <Card weather={weather}/>}
     </main>
   )
 };
